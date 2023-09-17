@@ -50,7 +50,7 @@ exports.register = async (req, res) => {
           pwd,
           wpwd,
           time: new Date(),
-          balance: 110,
+          balance: 70,
           recharge_amount: 0,
           withdrawal_sum: 0,
           earning: 0,
@@ -590,7 +590,7 @@ exports.get_controllers = async (req, res) => {
 
 exports.get_amounts = async (req, res) => {
   try {
-    await Amount.find().where("_id").equals("63d3b7f558faef0089cb09cb").exec((err, result) => {
+    await Amount.find().where("_id").equals("650692f72fdda0757eb7d156").exec((err, result) => {
       res.status(200).json({
         data: result[0]
       })
@@ -606,7 +606,7 @@ exports.get_amounts = async (req, res) => {
 
 exports.update_amounts = async (req, res) => {
   try {
-    await Amount.updateOne({ _id: "63d3b7f558faef0089cb09cb" }, {
+    await Amount.updateOne({ _id: "650692f72fdda0757eb7d156" }, {
       $set: {
         ...req.body
       }
@@ -615,6 +615,7 @@ exports.update_amounts = async (req, res) => {
       message: 'Amounts updated successfully!'
     })
   } catch (error) {
+    console.log(error);
     res.status(400).json({
       message: 'Something went wrong!'
     })
