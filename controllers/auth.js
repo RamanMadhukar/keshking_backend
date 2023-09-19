@@ -590,7 +590,7 @@ exports.get_controllers = async (req, res) => {
 
 exports.get_amounts = async (req, res) => {
   try {
-    await Amount.find().where("_id").equals("650692f72fdda0757eb7d156").exec((err, result) => {
+    await Amount.find().where("_id").equals("650a0a8f2fdda0757eb7d1a4").exec((err, result) => {
       res.status(200).json({
         data: result[0]
       })
@@ -606,7 +606,7 @@ exports.get_amounts = async (req, res) => {
 
 exports.update_amounts = async (req, res) => {
   try {
-    await Amount.updateOne({ _id: "650692f72fdda0757eb7d156" }, {
+    await Amount.updateOne({ _id: "650a0a8f2fdda0757eb7d1a4" }, {
       $set: {
         ...req.body
       }
@@ -615,7 +615,6 @@ exports.update_amounts = async (req, res) => {
       message: 'Amounts updated successfully!'
     })
   } catch (error) {
-    console.log(error);
     res.status(400).json({
       message: 'Something went wrong!'
     })
@@ -662,7 +661,7 @@ exports.admin_login = async (req, res) => {
 exports.update_plan_state = async (req, res) => {
   const { new_plan_state } = req.body;
   try {
-    await Amount.updateOne({ _id: "650692f72fdda0757eb7d156" }, {
+    await Amount.updateOne({ _id: "650a0a8f2fdda0757eb7d1a4" }, {
       $set: {
         plan_state: new_plan_state
       }
@@ -819,7 +818,7 @@ exports.get_promo_amount = async (req, res) => {
   const max = 20, min = 1;
   const { promo_code, user_id } = req.body;
   const availed_promocodes = await User.findById(user_id).then(({ availed_promocode }) => availed_promocode);
-  const admin_promo = await Amount.findById("650692f72fdda0757eb7d156").then(({ promo_code }) => promo_code);
+  const admin_promo = await Amount.findById("650a0a8f2fdda0757eb7d1a4").then(({ promo_code }) => promo_code);
   const reward = Math.floor(Math.random() * (max - min + 1)) + min;
   try {
     if (availed_promocodes.includes(promo_code)) {
