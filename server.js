@@ -23,7 +23,7 @@ app.use('/api', authRoutes);
 
 
 
-const port = process.env.PORT|| 5000
+const port = process.env.PORT|| 8000
 app.listen(port, (req, res) => {
-    console.log(`server is running on 5000`);
+    console.log(`server is running on 8000`);
 })
