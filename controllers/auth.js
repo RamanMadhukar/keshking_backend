@@ -357,6 +357,15 @@ exports.place_withdrawal = async (req, res) => {
 
   const data = req.body;
   console.log(data);
+
+  if (data.withdrawalAmount < 300) {
+    res.status(400).json({
+      message: 'Amount should be greater than 300',
+      data
+    })
+    return
+  }
+
   try {
     Withdrawal.create(data)
       .then(async (response) => {
